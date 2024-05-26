@@ -46,7 +46,7 @@
       "type": "object",
       "title": "Easy Date Insert",
       "properties": {
-        "easyDateInsert.format": {
+        "format": {
           "type": "string",
           "default": "YYYY-MM-DD",
           "enum": [

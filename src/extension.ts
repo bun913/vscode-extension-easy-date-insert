@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
   const todayCommand = vscode.commands.registerCommand(
     "easy-date-insert.today",
     () => {
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
   const tomorrowCommand = vscode.commands.registerCommand(
     "easy-date-insert.tomorrow",
     () => {
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
   const endOfMonthCommand = vscode.commands.registerCommand(
     "easy-date-insert.lastOfMonth",
     () => {
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
@@ -66,7 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
   const nextFridayCommand = vscode.commands.registerCommand(
     "easy-date-insert.nextFriday",
     () => {
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
@@ -85,7 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
   const startOfNextMonthCommand = vscode.commands.registerCommand(
     "easy-date-insert.startOfNextMonth",
     () => {
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
@@ -104,7 +104,7 @@ export function activate(context: vscode.ExtensionContext) {
   const nextMondayCommand = vscode.commands.registerCommand(
     "easy-date-insert.nextMonday",
     () => {
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
@@ -128,7 +128,7 @@ export function activate(context: vscode.ExtensionContext) {
         placeHolder: "Number of days",
       })
       const unitOfDays = await vscode.window.showQuickPick(
-        ["day", "month", "year"],
+        ["day", "week", "month", "year"],
         {
           placeHolder: "Select the unit of days to add",
         },
@@ -146,7 +146,7 @@ export function activate(context: vscode.ExtensionContext) {
         return
       }
 
-      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const config = vscode.workspace.getConfiguration("easyDateInsert")
       const format = config.get<string>("format") || "YYYY-MM-DD"
 
       const dayConverter = new DayConverter(format)
