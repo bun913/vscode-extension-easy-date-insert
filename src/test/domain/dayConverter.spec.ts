@@ -2,7 +2,7 @@ import { DayConverter } from "../../domain/dayConverter.js"
 import { vi } from "vitest"
 import { describe, it, expect } from "vitest"
 
-describe("Command", () => {
+describe("calc", () => {
   beforeEach(() => {
     vi.useFakeTimers()
   })
@@ -144,6 +144,178 @@ describe("Command", () => {
       const date = command.calc(1, "year")
 
       expect(date).toBe("2021-02-28")
+    })
+  })
+})
+
+describe("endOfMonth", () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  describe("when day is 2021-01-01", () => {
+    it("return end of month(2021-01-31)", () => {
+      vi.setSystemTime(new Date("2021-01-01"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.lastOfMonth()
+
+      expect(date).toBe("2021-01-31")
+    })
+  })
+
+  describe("when day is 2021-01-31", () => {
+    it("return end of month(2021-01-31)", () => {
+      vi.setSystemTime(new Date("2021-01-31"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.lastOfMonth()
+
+      expect(date).toBe("2021-01-31")
+    })
+  })
+
+  describe("when day is 2020-02-01(02/29 is leap day)", () => {
+    it("return end of month(2020-02-29)", () => {
+      vi.setSystemTime(new Date("2020-02-01"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.lastOfMonth()
+
+      expect(date).toBe("2020-02-29")
+    })
+  })
+})
+
+describe("nextFriday", () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  describe("when day is 2021-01-01(Friday)", () => {
+    it("return end of week(2021-01-01 Friday)", () => {
+      vi.setSystemTime(new Date("2021-01-01"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.nextFriday()
+
+      expect(date).toBe("2021-01-08")
+    })
+  })
+
+  describe("when day is 2021-01-02 Saturday", () => {
+    it("return end of week(2021-01-08)", () => {
+      vi.setSystemTime(new Date("2021-01-02"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.nextFriday()
+
+      expect(date).toBe("2021-01-08")
+    })
+  })
+
+  describe("when day is 2021-01-04 Monday", () => {
+    it("return end of week(2021-01-08)", () => {
+      vi.setSystemTime(new Date("2021-01-04"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.nextFriday()
+
+      expect(date).toBe("2021-01-08")
+    })
+  })
+})
+
+describe("nextMonday", () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  describe("when day is 2021-01-01(Friday)", () => {
+    it("return end of week(2021-01-04 Monday)", () => {
+      vi.setSystemTime(new Date("2021-01-01"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.nextMonday()
+
+      expect(date).toBe("2021-01-04")
+    })
+  })
+
+  describe("when day is 2021-01-02 Saturday", () => {
+    it("return end of week(2021-01-04)", () => {
+      vi.setSystemTime(new Date("2021-01-02"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.nextMonday()
+
+      expect(date).toBe("2021-01-04")
+    })
+  })
+
+  describe("when day is 2021-01-04 Monday", () => {
+    it("return end of week(2021-01-11)", () => {
+      vi.setSystemTime(new Date("2021-01-04"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.nextMonday()
+
+      expect(date).toBe("2021-01-11")
+    })
+  })
+})
+
+describe("startOfNextMonth", () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  describe("when day is 2021-01-01", () => {
+    it("return start of month(2021-02-01)", () => {
+      vi.setSystemTime(new Date("2021-01-01"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.startOfNextMonth()
+
+      expect(date).toBe("2021-02-01")
+    })
+  })
+
+  describe("when day is 2021-01-31", () => {
+    it("return start of month(2021-02-01)", () => {
+      vi.setSystemTime(new Date("2021-01-31"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.startOfNextMonth()
+
+      expect(date).toBe("2021-02-01")
+    })
+  })
+
+  describe("when day is 2020-02-01(02/29 is leap day)", () => {
+    it("return start of month(2020-03-01)", () => {
+      vi.setSystemTime(new Date("2020-02-01"))
+
+      const command = new DayConverter("YYYY-MM-DD")
+      const date = command.startOfNextMonth()
+
+      expect(date).toBe("2020-03-01")
     })
   })
 })

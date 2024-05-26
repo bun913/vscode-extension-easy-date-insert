@@ -16,6 +16,30 @@
       {
         "command": "easy-date-insert.today",
         "title": "Easy Date Insert: Today"
+      },
+      {
+        "command": "easy-date-insert.tomorrow",
+        "title": "Easy Date Insert: Tomorrow"
+      },
+      {
+        "command": "easy-date-insert.lastOfMonth",
+        "title": "Easy Date Insert: Last of Month"
+      },
+      {
+        "command": "easy-date-insert.nextFriday",
+        "title": "Easy Date Insert: Next Friday"
+      },
+      {
+        "command": "easy-date-insert.startOfNextMonth",
+        "title": "Easy Date Insert: Start of Next Month"
+      },
+      {
+        "command": "easy-date-insert.nextMonday",
+        "title": "Easy Date Insert: Next Monday"
+      },
+      {
+        "command": "easy-date-insert.insertDate",
+        "title": "Easy Date Insert: Insert Date"
       }
     ],
     "configuration": {
