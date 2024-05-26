@@ -9,21 +9,19 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "easy-date-insert.today",
     () => {
-      // debbug
-      vscode.window.showInformationMessage("Hello World from easy-date-insert!")
-      // const config = vscode.workspace.getConfiguration("easyDateInsert.format")
-      // const format = config.get<string>("format") || "YYYY-MM-DD"
-      //
-      // const dayConverter = new DayConverter(format)
-      // const today = dayConverter.calc()
-      //
-      // // Insert the date into the active editor
-      // const editor = vscode.window.activeTextEditor
-      // if (editor) {
-      //   editor.edit((editBuilder) => {
-      //     editBuilder.insert(editor.selection.active, today)
-      //   })
-      // }
+      const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      const format = config.get<string>("format") || "YYYY-MM-DD"
+
+      const dayConverter = new DayConverter(format)
+      const today = dayConverter.calc()
+
+      // Insert the date into the active editor
+      const editor = vscode.window.activeTextEditor
+      if (editor) {
+        editor.edit((editBuilder) => {
+          editBuilder.insert(editor.selection.active, today)
+        })
+      }
     },
   )
 
