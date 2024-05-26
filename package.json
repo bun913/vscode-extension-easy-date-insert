@@ -2,7 +2,7 @@
   "name": "easy-date-insert",
   "displayName": "easy-date-insert",
   "description": "Insert date string.ex: today/tommorow/lastofmonth/lastofyear, +1d/+1w/+1m",
-  "version": "0.0.1",
+  "version": "0.8.0",
   "engines": {
     "vscode": "^1.89.0"
   },
@@ -46,7 +46,7 @@
       "type": "object",
       "title": "Easy Date Insert",
       "properties": {
-        "format": {
+        "easyDateInsert.format": {
           "type": "string",
           "default": "YYYY-MM-DD",
           "enum": [
