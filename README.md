@@ -2,7 +2,7 @@
 
 Extension for easy date entry.
 
-![Demo](./docs/images/easy-date-insert.gif)
+![Demo](https://github.com/bun913/vscode-extension-easy-date-insert/raw/main/docs/images/easy-date-insert.gif)
 
 ## Features
 
@@ -20,7 +20,8 @@ You can use the following commands to insert date.
 
 You can choose the date format from the following.
 
-![Date format setting](./docs/images/easy-insert-date-setting-format.png)
+![Date format setting](https://github.com/bun913/vscode-extension-easy-date-insert/raw/main/docs/images/easy-insert-date-setting-format.png)
+
 
 ### Shortcuts
 
