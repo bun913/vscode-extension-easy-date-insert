@@ -1,25 +1,33 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode"
+import { DayConverter } from "./domain/dayConverter.js"
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerCommand(
+    "easy-date-insert.today",
+    () => {
+      // debbug
+      vscode.window.showInformationMessage("Hello World from easy-date-insert!")
+      // const config = vscode.workspace.getConfiguration("easyDateInsert.format")
+      // const format = config.get<string>("format") || "YYYY-MM-DD"
+      //
+      // const dayConverter = new DayConverter(format)
+      // const today = dayConverter.calc()
+      //
+      // // Insert the date into the active editor
+      // const editor = vscode.window.activeTextEditor
+      // if (editor) {
+      //   editor.edit((editBuilder) => {
+      //     editBuilder.insert(editor.selection.active, today)
+      //   })
+      // }
+    },
+  )
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "easy-date-insert" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('easy-date-insert.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from easy-date-insert!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable)
 }
 
 // This method is called when your extension is deactivated

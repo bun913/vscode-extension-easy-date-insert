@@ -14,10 +14,30 @@
   "contributes": {
     "commands": [
       {
-        "command": "easy-date-insert.helloWorld",
-        "title": "Hello World"
+        "command": "easy-date-insert.today",
+        "title": "Easy Date Insert: Today"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Easy Date Insert",
+      "properties": {
+        "easyDateInsert.format": {
+          "type": "string",
+          "default": "YYYY-MM-DD",
+          "enum": [
+            "YYYY-MM-DD",
+            "YYYY/MM/DD",
+            "MM-DD",
+            "MM/DD/YYYY",
+            "YYYY年MM月DD日",
+            "YY年MM月DD日",
+            "MM月DD日"
+          ],
+          "description": "Select the date format"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -27,7 +47,9 @@
     "lint": "eslint src --ext ts",
     "format": "prettier --write src/**/*.ts",
     "check-format": "prettier --check src/**/*.ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "test:code": "vitest --reporter=verbose",
+    "test:once": "vitest --run"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
@@ -39,6 +61,10 @@
     "@vscode/test-electron": "^2.3.9",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.11"
   }
 }
